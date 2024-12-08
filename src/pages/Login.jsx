@@ -11,6 +11,13 @@ const Login = () => {
   const [showToast, setShowToast] = useState(false);
   const navigate = useNavigate();
 
+  useEffect(() => {
+        const token = sessionStorage.getItem('token');
+        if (token) {
+            navigate('/dashboard');
+        }
+    }, [navigate]);
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
